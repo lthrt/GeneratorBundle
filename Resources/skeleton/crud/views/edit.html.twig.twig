@@ -1,0 +1,12 @@
+{% block extends %}
+{{ "{% extends '"~entity_singularized~"/"~entity_singularized~".html.twig' %}" }}
+{% endblock extends %}
+
+{% block content %}
+{{ "{% block body %}" }}
+    <h1>{{ entity_singularized|capitalize }} update</h1>
+    {{ '{% include \'/'~entity_singularized~'/form.html.twig\' %}' }}
+{% set hide_edit, hide_delete = true, true %}
+{{ include('crud/views/others/record_actions.html.twig.twig') -}}
+{{ "{% endblock body %}" }}
+{% endblock content %}

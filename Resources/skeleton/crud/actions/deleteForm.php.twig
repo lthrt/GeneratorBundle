@@ -1,0 +1,22 @@
+{% block form %}
+
+    /**
+     * Creates a form to delete a {{ entity_singularized }} entity.
+     *
+     * @param {{ entity_class }} ${{ entity_singularized }} The {{ entity_singularized }} entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm({{ entity_class }} ${{ entity_singularized }})
+    {
+        return $this->container->get('form.factory')->createNamed(
+            '{{prefix}}_{{entity_singularized}}_delete',
+            'Symfony\Component\Form\Extension\Core\Type\FormType',
+            null,
+            [
+                'action' => $this->generateUrl('{{ route_name_prefix }}_delete', ['{{ entity_singularized }}' => ${{ entity_singularized }}->get{{ identifier|capitalize }}()]),
+                'method' => 'DELETE',
+            ]
+        );
+    }
+{% endblock form %}

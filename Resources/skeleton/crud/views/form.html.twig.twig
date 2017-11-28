@@ -1,0 +1,15 @@
+{{ '{{ form_start(form)}}' }}
+{{''}}
+{%- for field, metadata in fields %}
+{%- if field != 'id' -%}
+{{ '{{ form_row(form.' ~ field ~ ') }}' }}
+{{''}}
+{%- endif %}
+{%- endfor %}
+{%- for assoc, metadata in associations %}
+{{ '{{ form_row(form.' ~ assoc ~ ') }}' }}
+{{''}}
+{%- endfor %}
+{{ '{{ form_rest(form) }}' }}
+{{ '{{ form_end(form) }}' }}
+
